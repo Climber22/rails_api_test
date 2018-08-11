@@ -1,0 +1,9 @@
+Metrics/LineLength:
+  Max: 150
+Metrics/MethodLength:
+  Max: 15
+Naming/FileName:
+  Exclude:
+    - Gemfile
+Style/Documentation:
+  Enabled: false
