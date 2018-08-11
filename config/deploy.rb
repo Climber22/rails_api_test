@@ -68,7 +68,7 @@ namespace :deploy do
     on roles(:app) do
       execute :mkdir, '-p', "#{shared_path}/config"
       upload!('config/database.yml', "#{shared_path}/config/database.yml")
-      upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
+      # upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
     end
   end
 
@@ -83,12 +83,12 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
+      Rake::Task['puma:restart'].reenable
       invoke 'puma:restart'
     end
   end
 
   # before :starting,     :check_revision
-  before :starting,     :upload
-  after  :finishing,    :compile_assets
-  after  :finishing,    :cleanup
+  before :starting, :upload
+  # after  :publishing,   :restart
 end
