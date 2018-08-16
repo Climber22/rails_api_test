@@ -2,7 +2,7 @@
 
 server '13.113.242.173', port: 22, roles: %i[app web db], primary: true
 set :repo_url, 'https://github.com/Climber22/rails_api_test.git'
-set :branch, 'introduce_capistrano'
+set :branch, ENV['BRANCH'] || 'master'
 set :application,     'rails_api_test'
 set :user,            'ec2-user'
 set :ssh_options,
