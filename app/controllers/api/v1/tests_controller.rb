@@ -3,9 +3,7 @@
 module Api
   module V1
     class TestsController < ApplicationController
-      def index
-        render json: { 'test': 'massage2' }
-      end
+      def index; end
     end
   end
 end
